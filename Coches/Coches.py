@@ -36,7 +36,7 @@ class Coche(Agent):
                 self.crashed = True
                 c.crashed = True
 
-class CocheFlexible(Coche):
+class RayoMcqueen(Coche):
     def __init__(self, unique_id, model, color):
         super().__init__(unique_id, model, color)
 
@@ -74,7 +74,7 @@ class CruceModel(Model):
         # Crear Caminos y Banquetas
         for x in range(width):
             for y in range(height):
-                if y == 2 or y == 3:  # Caminos
+                if 1 <= y <= 4:  # Caminos
                     camino = Camino(self.next_id(), self)
                     self.grid.place_agent(camino, (x, y))
                 else:  # Banquetas
@@ -86,7 +86,7 @@ class CruceModel(Model):
         self.grid.place_agent(coche1, (0, 2))
         self.schedule.add(coche1)
 
-        coche2 = CocheFlexible(self.next_id(), self, "red")
+        coche2 = RayoMcqueen(self.next_id(), self, "red")
         self.grid.place_agent(coche2, (0, 3))
         self.schedule.add(coche2)
 
@@ -103,3 +103,4 @@ class CruceModel(Model):
 model = CruceModel(10, 5)
 for i in range(10):
     model.step()
+

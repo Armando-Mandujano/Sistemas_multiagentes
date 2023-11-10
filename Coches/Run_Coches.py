@@ -1,8 +1,8 @@
-from Coches import CruceModel, Coche, Camino, Banqueta, CocheFlexible
+from Coches import CruceModel, Coche, Camino, Banqueta, RayoMcqueen
 import mesa.visualization
 
 def agent_portrayal(agent):
-    if isinstance(agent, Coche) or isinstance(agent, CocheFlexible):
+    if isinstance(agent, Coche) or isinstance(agent, RayoMcqueen):
         portrayal = {"Shape": "circle", "Filled": "true", "r": 0.5, "Layer": 1}
         portrayal["Color"] = "red" if agent.crashed else agent.color
         if agent.crashed:
@@ -11,7 +11,7 @@ def agent_portrayal(agent):
         return portrayal
     if isinstance(agent, Coche):
         return {"Shape": "circle", "Filled": "true", "r": 0.5, "Color": "blue", "Layer": 1}
-    elif isinstance(agent, CocheFlexible):
+    elif isinstance(agent, RayoMcqueen):
         return {"Shape": "circle", "Filled": "true", "r": 0.5, "Color": "red", "Layer": 1}
     elif isinstance(agent, Camino):
         return {"Shape": "rect", "Filled": "true", "w": 1, "h": 1, "Color": "grey", "Layer": 0}
